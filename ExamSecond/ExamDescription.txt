@@ -1,0 +1,38 @@
+Who remembers the traditional calculators before mobile phones? Create a program which simulates such a tool! For sake of simplicity our calculator will work only with non-negative integer numbers and only summation and multiplication are supported.
+
+Base task (12 points)
+The behavior is presented by the following figure. The machine has 5 possible states between which it moves by pressing imaginary buttons. We may enter digits (0-9) and operational symbols (+ and *) on the interface. The machine keeps at most two (non-negative) integer numbers in its memory: the two operands of the operation to be performed. Let's name these two numbers memory and input. Entering digits is performed by digit(n). During this we modify the value of input: this value is multiplied by 10 and added the parameter of digit.
+
+állapotátmenetek
+
+The initial state of the calculator is LEFT. In this state we can enter the left operand of the operation to be performed. The value stored in input is initially 0. The left operand is created by consecutive input of digits while staying in state LEFT. By entering an operational symbol (which happens by functions plus and times) we step to the state LEFT_PLUS or LEFT_TIMES, the value of input is assigned to memory and input becomes 0. If multiple operations are entered then we take the last one. From LEFT_PLUS and LEFT_TIMES we can get to PLUS_RIGHT and TIMES_RIGHT states by entering digits. These digits determine the right operand of the operation by modifying input. From PLUS_RIGHT and TIMES_RIGHT we can go further by entering an operational symbol while computing the current operation and storing the result in memory. (If the machine was in PLUS_RIGHT then the result is memory+input, if the machine was in TIMES_RIGHT then the result is memory*input.) As a result of plus the machine steps to LEFT_PLUS, and for times it steps to LEFT_TIMES and of course by resetting input to 0 we begin reading another right operand.
+
+Let's create the calculator based on the instructions above. Create an enumeration type (STATE) for representing the 5 states. Use three global variables for representing the calculator: state, memory and input. (The type of memory and input should be non-negative integer.)
+
+Create three functions for the representation of the interface: digit(n), plus() and times(). The structograms of digit(n) and plus() are these. In the implementation of plus() use switch statement!
+
+digit(n) struktogramja
+
+plus() struktogramja
+
+The implementation of times() is similar to plus(), so it is worth to organize it to a parameterized helper function. (Hint: the difference is that in the last statement LEFT_TIMES should be assigned to state.)
+
+Create a reset()  function which resets the calculator to its initial state. (It sets the values to 0 and steps to the state LEFT.)
+
+Create the main program which tests the calculator! In this main program you should use the operations of the interface for an input and print the values of memory and input. (You don't need the read the input from file or standard input!)
+
+Modularisation (10 points)
+Separate the program to two translation units! The implementation of the calculator should go to one and the main program goes to the other. The interface between these modules should be in the header file according to the conventions. (Use header guards in it!)
+
+In the interface there should be only four operations (digit(n), plus(), times() and reset()). The global variables and the potential helper functions should be available only in their own translation units.
+
+The four operations should return what is displayed on the screen of the calculator. The reset() and  digit(n) operations return the value of input, furthermore plus() and times() functions return the value of memory.
+
+The main program works as follows. In case the program has command line arguments, then those should be processed with reset() being called before each. While processing the characters of a command line argument you should call the digit(n), the plus() and the times() operations. (You may skip the characters other than +, * and 0-9.)
+
+Calculator type (8 points)
+(Don't remove the solution so far, but create new files for this sub-task!)
+
+Get rid of the global variables, since their usage should be avoided. Introduce the type calculator instead, which implements the internal state (state, memory and input) of the calculator with a record (structure). calculator should be a type-synonym. The operations should a calculator as (input and output) parameters.
+
+Redesign the main program accordingly!
