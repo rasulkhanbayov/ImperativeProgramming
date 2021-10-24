@@ -1,0 +1,7 @@
+Task 1: Create a program where you define an array of character arrays. Read string from the user until "quit" is given by the user. Print the array elements. Reallocate the array each time a new word is inserted.
+
+Use malloc(), realloc() and free() functions.
+
+
+Task 2: Please do miniexam 6 again and if you make mistake, please try to understand. Just give me report about this exam like this: 
+it was easy, medium, or hard. if it is hard, please explain why? 

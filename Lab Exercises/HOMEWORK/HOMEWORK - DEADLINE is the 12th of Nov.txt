@@ -1,0 +1,24 @@
+Task 1: Try to understand and explain the following code.   
+#include <stdio.h>
+    #include <string.h>
+    int main(void) {
+        char t[30] = "ABCDEFGHIJK";
+
+        int  s = strlen(t);
+        printf("%d \n",s);
+
+
+
+        t[5] = '\0';
+        s = strlen(t);
+        printf("%d \n",s);
+        printf("%s \n", t);
+        strcpy(t, "add ");
+        printf("%s \n", t);
+
+        return 0;
+    }
+
+Task 2: Lab 4.3.14.1 Bubble sort. Please read chapter 4.3 from netacad. 
+
+Task 3: Please do miniexam 5 again and try to understand. 
